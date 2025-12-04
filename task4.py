@@ -7,4 +7,21 @@ G(n) = G(n - 3) + 2, если n > 6
 
 Формат вывода: программа должна печатать только одно число - ответ на задачу.
 """
-print(152076)
+def G(n):
+    if n <= 6:
+        return 5 ** n
+    k = (n - 6 + 2) // 3 
+    reduced_n = n - 3 * k
+    while reduced_n > 6:
+        k += 1
+        reduced_n -= 3
+
+    return (5 ** reduced_n) + 2 * k
+
+
+def F(n):
+    return G(n - 50000) + G(n + 50000)
+
+
+result = F(100000)
+print(result)
