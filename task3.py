@@ -7,4 +7,31 @@ G(n) = G(n - 2) + 1, если n >= 10.
 
 Формат вывода: программа должна печатать только одно число - ответ на задачу.
 """
-print(228)
+import sys
+sys.setrecursionlimit(10000000)
+F_cache = {}
+G_c = {}
+
+
+def G(n):
+    if n in G_c:
+        return G_c[n]
+
+    if n < 10:
+        result = 2 * n
+    else:
+        result = G(n - 2) + 1
+
+    G_c[n] = result
+    return result
+
+
+def F(n):
+    if n in F_cache:
+        return F_cache[n]
+
+    result = 2 * (G(n - 3) + 8)
+    F_cache[n] = result
+    return result
+
+print(F(15548))
