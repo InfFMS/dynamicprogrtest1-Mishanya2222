@@ -6,4 +6,16 @@ F(n) = n - 7 + F(n - 21), если n > 10
 
 Формат вывода: программа должна печатать только одно число - ответ на задачу.
 """
-print(17274)
+
+import sys
+sys.setrecursionlimit(10000000)
+F = [0]*1856500
+
+def funk(n):
+    if n <=10:
+        return n
+    elif n > 10:
+        F[n] = n -7 + funk(n-21)
+        return F[n]
+
+print((funk(185734) - funk(185650))/funk(40))

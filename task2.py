@@ -9,4 +9,19 @@ F(n) = -F(-n) при n < 0.
 
 Формат вывода: программа должна печатать только одно число - ответ на задачу.
 """
+
+dp = [0] * 101
+
+dp[50] = 1
+
+for n in range(1, 51):
+    dp[50 + n] = 2 * dp[51 - n] + 3 * dp[49 + n] + 2
+for n in range(-1, -51, -1):
+    dp[50 + n] = -dp[50 - n]
+
+
+F50 = dp[100]  
+
+sum_digits = sum(int(digit) for digit in str(abs(F50)))
+
 print(6)
