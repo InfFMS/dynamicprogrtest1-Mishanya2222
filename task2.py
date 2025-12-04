@@ -16,13 +16,11 @@ dp[50] = 1
 
 for n in range(1, 51):
     dp[50 + n] = 2 * dp[51 - n] + 3 * dp[49 + n] + 2
-
-# Вычисляем F(n) для отрицательных n от -1 до -50
 for n in range(-1, -51, -1):
     dp[50 + n] = -dp[50 - n]
 
-# Получаем F(50)
-F50 = dp[100]  # 50 + 50 = 15588
+
+F50 = dp[100]  
 
 sum_digits = sum(int(digit) for digit in str(abs(F50)))
 
